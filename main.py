@@ -1,6 +1,9 @@
+#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 
+from groq import Groq
 import speech_recognition as sr #Підкключаєио модуль для розпізновання мови
 import subprocess
 import webbrowser 
+# client = Groq(api_key = "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")
 recogniser = sr.Recognizer() #створюємо розпізновач
 def listening_voice(): #функція для прослуховування аудіо
     with sr.Microphone() as sourse: #підключення до мікрофону, як до істочнику
@@ -16,12 +19,17 @@ def voice_in_text(audio): #функція для перетворення ауд
         pass
 def answer_bot(text):
     if "привіт" in text.lower():
-        print("Привіт. Чим я можу допомогти?")
-    if "2 + 2" in text.lower():
-        print("4")
-    if "німеччини" in text.lower():
-        print("Берлін")
-    if "калькулятор" in text.lower():
+    
+        # response = client.chat.completions.create(model = "llama-3.3-70b-versatile",
+        #                                     messages = [{"role": "user", "content": text }])
+        # print(response.choices[0].message.content)
+    # if "привіт" in text.lower():
+    #     print("Привіт. Чим я можу допомогти?")
+    # if "2 + 2" in text.lower():
+    #     print("4")
+    # if "німеччини" in text.lower():
+    #     print("Берлін")
+     if "калькулятор" in text.lower():
         subprocess.call(["calc"])
     if "гугл" in text.lower() or "google" in text.lower():
         subprocess.call(["C:\Program Files\Google\Chrome\Application\chrome.exe"])
@@ -29,8 +37,21 @@ def answer_bot(text):
         webbrowser.open("https://classroom.google.com/u/0/h?hl=ruhttps://classroom.google.com/u/0/h?hl=ru")
     # if "cутінки" in text.lower():
     #     webbrowser.open(f'https://music.youtube.com/search?q={text.lower()[7:]}')
-    if "youTube" or "ютуб" in text.lower():
+    if "youtube" or "ютуб" in text.lower():
         webbrowser.open("https://music.youtube.com/")
+    if "github" or "гитхаб" in text.lower():
+        webbrowser.open("https://github.com/")
+    if "перекладач" in text.lower():
+        webbrowser.open("https://www.multitran.com/")
+        
+    if "календарь" in text.lower():
+        subprocess.call(["calendar"])
+    if "калькулятор" in text.lower():
+        subprocess.call(["calculator"])
+    if "камера" in text.lower():
+        subprocess.call(["camera"])
+
+
     
 def main():
     result_audio = listening_voice()
