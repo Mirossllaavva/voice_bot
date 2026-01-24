@@ -3,8 +3,10 @@ import subprocess
 import webbrowser 
 import intelect
 from groq import Groq
-client = Groq(api_key = "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")
+import gtts
+import os
 
+#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
 recogniser = sr.Recognizer() #створюємо розпізновач
 def listening_voice(): #функція для прослуховування аудіо
     with sr.Microphone() as sourse: #підключення до мікрофону, як до істочнику
@@ -51,9 +53,13 @@ def answer_bot(text):
             subprocess.call(["calculator"])
         elif "камера" in text.lower():
             subprocess.call(["camera"])
-        elif "нуклeус" in text.lower():
-            
+        if "друг" in text:
+            print(1)
             result = intelect.generator(text)
+            language = "uk"
+            speech = gtts.gTTS(text = result, lang = language, slow = False)
+            speech.save("output.mp3")
+            os.system("output.mp3")
             print(result)
 
 
