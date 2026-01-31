@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QApplication #піключення модулей
 from PyQt5.QtWidgets import QMainWindow, QInputDialog, QFileDialog
 from ui import Ui_MainWindow
+from main import*
 class Widget(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -9,7 +10,10 @@ class Widget(QMainWindow):
 app = QApplication([]) #створення додадку
 ex = Widget() #створення віджету
 ex.show() #показ вікна
-
+       
+#ex.ui.btn_micro.clicked.connect(main) 
+        
+ex.ui.pushButton.clicked.connect(main)
 
 
 
