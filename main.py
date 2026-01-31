@@ -68,5 +68,4 @@ def main():
     result_audio = listening_voice()
     result_text = voice_in_text(result_audio)
     answer_bot(result_text)
-if __name__ == "__main__":
-    main()
+
